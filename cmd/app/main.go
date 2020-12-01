@@ -5,12 +5,15 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
 	"github.com/codingnagger/advent-of-code-2020/pkg/days/day1"
 )
 
 func main() {
+	start := time.Now()
+
 	today := &day1.Computer{}
 
 	input := readInput("./assets/input/day1.txt")
@@ -21,7 +24,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(res)
+	fmt.Printf("\n%s\n", res)
+
+	elapsed := time.Since(start)
+	fmt.Printf("\nExecution took %s\n", elapsed)
 }
 
 func readInput(filename string) days.Input {
