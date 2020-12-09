@@ -26,3 +26,4 @@ I started writing a cruise log on day 1 to talk about progress and challenges fa
 - [The Advent of Code 2020 Day 6 log, counting stars](https://www.codingnagger.com/2020/12/06/the-advent-of-code-2020-day-6-log-counting-stars/)
 - [The Advent of Code 2020 Day 7 log, loops in loops](https://www.codingnagger.com/2020/12/07/the-advent-of-code-2020-day-7-log-loops-in-loops/)
 - [The Advent of Code 2020 Day 8 log, Assembly-bootleg](https://www.codingnagger.com/2020/12/08/the-advent-of-code-2020-day-8-log-assembly-bootleg/)
+- [The Advent of Code 2020 Day 9 log, Weakness exploit](https://www.codingnagger.com/2020/12/09/the-advent-of-code-2020-day-9-log-weakness-exploit/)
