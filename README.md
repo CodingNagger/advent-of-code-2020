@@ -28,3 +28,4 @@ I started writing a cruise log on day 1 to talk about progress and challenges fa
 - [The Advent of Code 2020 Day 8 log, Assembly-bootleg](https://www.codingnagger.com/2020/12/08/the-advent-of-code-2020-day-8-log-assembly-bootleg/)
 - [The Advent of Code 2020 Day 9 log, Weakness exploit](https://www.codingnagger.com/2020/12/09/the-advent-of-code-2020-day-9-log-weakness-exploit/)
 - [The Advent of Code 2020 Day 10 log, Fear insanity](https://www.codingnagger.com/2020/12/10/the-advent-of-code-2020-day-10-log-fear-insanity/)
+- [The Advent of Code 2020 Day 11 log, Headache pain](https://www.codingnagger.com/2020/12/11/the-advent-of-code-2020-day-11-log-headache-pain/)
