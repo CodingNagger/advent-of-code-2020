@@ -8,15 +8,15 @@ import (
 	"time"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
-	"github.com/codingnagger/advent-of-code-2020/pkg/days/day12"
+	"github.com/codingnagger/advent-of-code-2020/pkg/days/day13"
 )
 
 func main() {
 	start := time.Now()
 
-	today := &day12.Computer{}
+	today := &day13.Computer{}
 
-	input := readInput("./assets/input/day12.txt")
+	input := readInput("./assets/input/day13.txt")
 
 	res, err := today.Part2(input)
 
