@@ -32,3 +32,4 @@ I started writing a cruise log on day 1 to talk about progress and challenges fa
 - [The Advent of Code 2020 Day 12 log, Deepwater Danger](https://www.codingnagger.com/2020/12/12/the-advent-of-code-2020-day-12-log-deepwater-danger/)
 - [The Advent of Code 2020 Day 13 log, Thirty-three hours](https://www.codingnagger.com/2020/12/13/the-advent-of-code-2020-day-13-log-thirty-three-hours/)
 - [The Advent of Code 2020 Day 14 log, RAM stain](https://www.codingnagger.com/2020/12/14/the-advent-of-code-2020-day-14-log-ram-stain/)
+- [The Advent of Code 2020 Day 15 log, Counts and turns](https://www.codingnagger.com/2020/12/15/the-advent-of-code-2020-day-15-log-counts-and-turns/)
