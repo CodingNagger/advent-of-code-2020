@@ -3,10 +3,10 @@ package day4
 import (
 	"fmt"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/types"
 )
 
 // Computer of the Advent of code 2020 Day 4
@@ -24,6 +24,12 @@ type passport struct {
 	eyeColor       string
 	passportID     string
 	countryID      string
+
+	birthYearChecker      types.BoundsChecker
+	issueYearChecker      types.BoundsChecker
+	expirationYearChecker types.BoundsChecker
+	inHeightChecker       types.BoundsChecker
+	cmHeightChecker       types.BoundsChecker
 }
 
 // Part2 of Day4
@@ -56,8 +62,18 @@ func (d *Computer) Part1(input days.Input) (days.Result, error) {
 	return days.Result(fmt.Sprint(count)), nil
 }
 
+func newPassport() passport {
+	return passport{
+		birthYearChecker:      types.BoundsChecker{Min: 1920, Max: 2002},
+		issueYearChecker:      types.BoundsChecker{Min: 2010, Max: 2020},
+		expirationYearChecker: types.BoundsChecker{Min: 2020, Max: 2030},
+		cmHeightChecker:       types.BoundsChecker{Min: 150, Max: 193},
+		inHeightChecker:       types.BoundsChecker{Min: 59, Max: 76},
+	}
+}
+
 func parsePassports(input days.Input) []passport {
-	currentPassport := passport{}
+	currentPassport := newPassport()
 	passports := []passport{}
 
 	for _, line := range input {
@@ -65,7 +81,7 @@ func parsePassports(input days.Input) []passport {
 
 		if err == errNoMoreFields {
 			passports = append(passports, currentPassport)
-			currentPassport = passport{}
+			currentPassport = newPassport()
 		}
 	}
 
@@ -129,33 +145,15 @@ func (p passport) isValid() bool {
 }
 
 func (p passport) hasValidBirthYear() bool {
-	b, err := strconv.Atoi(p.birthYear)
-
-	if err != nil {
-		return false
-	}
-
-	return b >= 1920 && b <= 2002
+	return p.birthYearChecker.ValidateString(p.birthYear)
 }
 
 func (p passport) hasValidIssueYear() bool {
-	b, err := strconv.Atoi(p.issueYear)
-
-	if err != nil {
-		return false
-	}
-
-	return b >= 2010 && b <= 2020
+	return p.issueYearChecker.ValidateString(p.issueYear)
 }
 
 func (p passport) hasValidExpirationYear() bool {
-	b, err := strconv.Atoi(p.expirationYear)
-
-	if err != nil {
-		return false
-	}
-
-	return b >= 2020 && b <= 2030
+	return p.expirationYearChecker.ValidateString(p.expirationYear)
 }
 
 func (p passport) hasValidHeight() bool {
@@ -169,23 +167,15 @@ func (p passport) hasValidHeight() bool {
 }
 
 func (p passport) hasValidCmHeight() bool {
-	h, err := strconv.Atoi(p.height[:len(p.height)-2])
-
-	if err != nil {
-		return false
-	}
-
-	return h >= 150 && h <= 193
+	return p.cmHeightChecker.ValidateString(p.getHeightNumber())
 }
 
 func (p passport) hasValidInHeight() bool {
-	h, err := strconv.Atoi(p.height[:len(p.height)-2])
+	return p.inHeightChecker.ValidateString(p.getHeightNumber())
+}
 
-	if err != nil {
-		return false
-	}
-
-	return h >= 59 && h <= 76
+func (p passport) getHeightNumber() string {
+	return p.height[:len(p.height)-2]
 }
 
 func (p passport) hasValidHairColor() bool {

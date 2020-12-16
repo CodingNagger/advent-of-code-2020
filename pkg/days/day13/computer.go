@@ -3,7 +3,8 @@ package day13
 import (
 	"fmt"
 	"strconv"
-	"strings"
+
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/inputparser"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
 )
@@ -19,7 +20,7 @@ const (
 // Part1 of Day 13
 func (d *Computer) Part1(input days.Input) (days.Result, error) {
 	timestamp := parseTimestamp(input[0])
-	busIds := parseBusIds(input[1])
+	busIds := parseBusIds(input)
 
 	selectedBus := busIds[0]
 	min := timestamp - (timestamp % selectedBus) + selectedBus
@@ -38,7 +39,7 @@ func (d *Computer) Part1(input days.Input) (days.Result, error) {
 
 // Part2 of Day 13
 func (d *Computer) Part2(input days.Input) (days.Result, error) {
-	busIds := parseBusIds(input[1])
+	busIds := parseBusIds(input)
 	cursor := 1
 	timestamp := int64(0)
 	increment := busIds[0]
@@ -79,18 +80,6 @@ func parseTimestamp(time string) int {
 	return res
 }
 
-func parseBusIds(allBuses string) []int {
-	entries := strings.Split(allBuses, ",")
-	ids := []int{}
-
-	for _, entry := range entries {
-		if entry != "x" {
-			numberValue, _ := strconv.Atoi(entry)
-			ids = append(ids, numberValue)
-		} else {
-			ids = append(ids, ignoredBus)
-		}
-	}
-
-	return ids
+func parseBusIds(input days.Input) []int {
+	return inputparser.ParseCsvNumbers(input[1], ignoredBus)
 }

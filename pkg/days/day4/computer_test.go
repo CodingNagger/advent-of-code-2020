@@ -90,7 +90,7 @@ func TestParsePassports(t *testing.T) {
 }
 
 func TestParsePassportsFields(t *testing.T) {
-	p := passport{}
+	p := newPassport()
 	err := parsePassportFields(&p,
 		"ecl:gry pid:860033327 eyr:2020 hcl:#fffffd")
 
@@ -168,16 +168,22 @@ func TestValidBirthYear(t *testing.T) {
 	invalidBirthYears := []string{"1919", "2003", "2158", "1852"}
 
 	for _, year := range validBirthYears {
-		if !(passport{birthYear: year}).hasValidBirthYear() {
+		if !newPassportWithBirthYear(year).hasValidBirthYear() {
 			t.Fatalf("birthYear - Should have accepted %s", year)
 		}
 	}
 
 	for _, year := range invalidBirthYears {
-		if (passport{birthYear: year}).hasValidBirthYear() {
+		if newPassportWithBirthYear(year).hasValidBirthYear() {
 			t.Fatalf("birthYear - Should have rejected %s", year)
 		}
 	}
+}
+
+func newPassportWithBirthYear(year string) passport {
+	p := newPassport()
+	p.birthYear = year
+	return p
 }
 
 func TestValidIssueYear(t *testing.T) {
@@ -186,16 +192,22 @@ func TestValidIssueYear(t *testing.T) {
 		"1852", "2021"}
 
 	for _, year := range validIssueYears {
-		if !(passport{issueYear: year}).hasValidIssueYear() {
+		if !newPassportWithIssueYear(year).hasValidIssueYear() {
 			t.Fatalf("issueYear - Should have accepted %s", year)
 		}
 	}
 
 	for _, year := range invalidIssueYears {
-		if (passport{issueYear: year}).hasValidIssueYear() {
+		if newPassportWithIssueYear(year).hasValidIssueYear() {
 			t.Fatalf("issueYear - Should have rejected %s", year)
 		}
 	}
+}
+
+func newPassportWithIssueYear(year string) passport {
+	p := newPassport()
+	p.issueYear = year
+	return p
 }
 
 func TestValidExpirationYear(t *testing.T) {
@@ -203,16 +215,22 @@ func TestValidExpirationYear(t *testing.T) {
 	invalidExpirationYears := []string{"2009", "2019", "2031", "2158"}
 
 	for _, year := range validExpirationYears {
-		if !(passport{expirationYear: year}).hasValidExpirationYear() {
+		if !newPassportWithExpirationYear(year).hasValidExpirationYear() {
 			t.Fatalf("expirationYear - Should have accepted %s", year)
 		}
 	}
 
 	for _, year := range invalidExpirationYears {
-		if (passport{expirationYear: year}).hasValidExpirationYear() {
+		if newPassportWithExpirationYear(year).hasValidExpirationYear() {
 			t.Fatalf("expirationYear - Should have rejected %s", year)
 		}
 	}
+}
+
+func newPassportWithExpirationYear(year string) passport {
+	p := newPassport()
+	p.expirationYear = year
+	return p
 }
 
 func TestHeight(t *testing.T) {
@@ -220,16 +238,22 @@ func TestHeight(t *testing.T) {
 	invalidHeights := []string{"190in", "190", "59", "58in", "194cm"}
 
 	for _, height := range validHeights {
-		if !(passport{height: height}).hasValidHeight() {
+		if !passportWithHeight(height).hasValidHeight() {
 			t.Fatalf("expirationYear - Should have accepted %s", height)
 		}
 	}
 
 	for _, height := range invalidHeights {
-		if (passport{height: height}).hasValidHeight() {
+		if passportWithHeight(height).hasValidHeight() {
 			t.Fatalf("expirationYear - Should have rejected %s", height)
 		}
 	}
+}
+
+func passportWithHeight(height string) passport {
+	p := newPassport()
+	p.height = height
+	return p
 }
 
 func TestHairColor(t *testing.T) {

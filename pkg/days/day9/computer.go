@@ -2,9 +2,9 @@ package day9
 
 import (
 	"fmt"
-	"strconv"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/inputparser"
 )
 
 // Computer of the Advent of code 2020 Day 9
@@ -13,13 +13,13 @@ type Computer struct {
 
 // Part1 of Day 9
 func (d *Computer) Part1(input days.Input) (days.Result, error) {
-	res, _ := findUnrulyNumber(25, createValuesFromInput(input))
+	res, _ := findUnrulyNumber(25, inputparser.ParseNumbers(input))
 	return days.Result(fmt.Sprint(res)), nil
 }
 
 // Part2 of Day 9
 func (d *Computer) Part2(input days.Input) (days.Result, error) {
-	res, _ := findEncryptionWeakness(25, createValuesFromInput(input))
+	res, _ := findEncryptionWeakness(25, inputparser.ParseNumbers(input))
 	return days.Result(fmt.Sprint(res)), nil
 }
 
@@ -74,15 +74,4 @@ func findUnrulyNumber(preamble int, values []int) (int, error) {
 		}
 	}
 	return 0, fmt.Errorf("Not found")
-}
-
-func createValuesFromInput(input days.Input) []int {
-	values := []int{}
-
-	for _, line := range input {
-		value, _ := strconv.Atoi(line)
-		values = append(values, value)
-	}
-
-	return values
 }

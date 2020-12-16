@@ -3,7 +3,8 @@ package day10
 import (
 	"fmt"
 	"sort"
-	"strconv"
+
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/inputparser"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
 )
@@ -86,14 +87,7 @@ func countPathsFrom(start int, road map[int]bool) int {
 }
 
 func createSortedIntegersFromInput(input days.Input) []int {
-	values := []int{}
-
-	for _, line := range input {
-		value, _ := strconv.Atoi(line)
-		values = append(values, value)
-	}
-
+	values := inputparser.ParseNumbers(input)
 	sort.IntSlice(values).Sort()
-
 	return values
 }

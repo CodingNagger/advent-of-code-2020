@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/types"
 )
 
 func TestPart1(t *testing.T) {
@@ -144,9 +145,9 @@ func TestFindFieldIndexes(t *testing.T) {
 func TestParseRule(t *testing.T) {
 	expectedResult := rule{
 		name: "row",
-		ranges: []validRange{
-			{min: 6, max: 11},
-			{min: 33, max: 44},
+		ranges: []types.BoundsChecker{
+			{Min: 6, Max: 11},
+			{Min: 33, Max: 44},
 		},
 	}
 	result := parseRule("row: 6-11 or 33-44")

@@ -2,8 +2,8 @@ package day15
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
+
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/inputparser"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
 )
@@ -67,13 +67,5 @@ func runGame(input days.Input, lastTurn int) int {
 }
 
 func parseStartingNumbers(input days.Input) []int {
-	values := strings.Split(input[0], ",")
-	res := []int{}
-
-	for _, value := range values {
-		number, _ := strconv.Atoi(value)
-		res = append(res, number)
-	}
-
-	return res
+	return inputparser.ParseCsvNumbers(input[0], 0)
 }

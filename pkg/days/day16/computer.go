@@ -6,25 +6,25 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/inputparser"
+
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/types"
 )
 
 // Computer of the Advent of code 2020 Day 16
 type Computer struct {
 	rules         []rule
-	myTicket      []int
-	nearbyTickets [][]int
+	myTicket      ticket
+	nearbyTickets []ticket
 }
 
 type rule struct {
 	name   string
-	ranges []validRange
+	ranges []types.BoundsChecker
 }
 
-type validRange struct {
-	min int
-	max int
-}
+type ticket []int
 
 // Part1 of Day 16
 func (d *Computer) Part1(input days.Input) (days.Result, error) {
@@ -54,7 +54,7 @@ func (d *Computer) findFieldIndexes() map[string]int {
 	lockedFields := make(map[int]bool, ticketSize)
 
 	for len(res) != ticketSize {
-		matches := make(map[string][]int, ticketSize)
+		matches := make(map[string]ticket, ticketSize)
 
 		for _, rule := range d.rules {
 			for i := 0; i < ticketSize; i++ {
@@ -93,19 +93,15 @@ func (d *Computer) findFieldIndexes() map[string]int {
 func (rule *rule) validate(field int) bool {
 	isValid := false
 	for _, r := range rule.ranges {
-		isValid = isValid || r.validate(field)
+		isValid = isValid || r.Validate(field)
 	}
 	return isValid
 }
 
-func (r *validRange) validate(field int) bool {
-	return r.min <= field && r.max >= field
-}
-
 func (d *Computer) load(input days.Input, keepInvalid bool) {
 	d.rules = []rule{}
-	d.myTicket = []int{}
-	d.nearbyTickets = [][]int{}
+	d.myTicket = ticket{}
+	d.nearbyTickets = []ticket{}
 
 	for _, line := range input {
 		if isRule(line) {
@@ -173,7 +169,7 @@ func parseRule(line string) rule {
 
 	name := halves[0]
 	rangesHalves := strings.Split(halves[1], "or")
-	ranges := []validRange{}
+	ranges := []types.BoundsChecker{}
 
 	for _, rangeHalf := range rangesHalves {
 		minMax := strings.Split(rangeHalf, "-")
@@ -181,20 +177,12 @@ func parseRule(line string) rule {
 		min, _ := strconv.Atoi(strings.TrimSpace(minMax[0]))
 		max, _ := strconv.Atoi(strings.TrimSpace(minMax[1]))
 
-		ranges = append(ranges, validRange{min, max})
+		ranges = append(ranges, types.BoundsChecker{Min: min, Max: max})
 	}
 
 	return rule{name, ranges}
 }
 
 func parseTicketFromLine(line string) []int {
-	values := strings.Split(line, ",")
-	res := []int{}
-
-	for _, value := range values {
-		number, _ := strconv.Atoi(value)
-		res = append(res, number)
-	}
-
-	return res
+	return inputparser.ParseCsvNumbers(line, 0)
 }

@@ -7,6 +7,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/codingnagger/advent-of-code-2020/pkg/days"
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/types"
 )
 
 // Computer of the Advent of code 2020 Day 1
@@ -14,8 +15,7 @@ type Computer struct {
 }
 
 type policyCheck struct {
-	min      int
-	max      int
+	bounds   types.BoundsChecker
 	char     rune
 	password string
 }
@@ -61,8 +61,10 @@ func createPolicyCheck(candidate string) policyCheck {
 
 	minMax := strings.Split(parts[0], "-")
 
-	res.min, _ = strconv.Atoi(minMax[0])
-	res.max, _ = strconv.Atoi(minMax[1])
+	min, _ := strconv.Atoi(minMax[0])
+	max, _ := strconv.Atoi(minMax[1])
+
+	res.bounds = types.NewBoundsChecker(min, max)
 
 	return res
 }
@@ -78,12 +80,12 @@ func (p *policyCheck) isValid() bool {
 		count++
 	}
 
-	return p.min <= count && p.max >= count
+	return p.bounds.Validate(count)
 }
 
 func (p *policyCheck) isValidWithCorrectPolicy() bool {
 	chars := []rune(p.password)
 
-	return (chars[p.min-1] == p.char || chars[p.max-1] == p.char) &&
-		chars[p.min-1] != chars[p.max-1]
+	return (chars[p.bounds.Min-1] == p.char || chars[p.bounds.Max-1] == p.char) &&
+		chars[p.bounds.Min-1] != chars[p.bounds.Max-1]
 }

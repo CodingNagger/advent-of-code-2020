@@ -14,6 +14,11 @@ go run ./cmd/app
 go test ./...
 ```
 
+## Some posts I wrote about this year's Advent of Code
+
+- [Some interfaces you can write in Go or C# to save time](https://www.codingnagger.com/2020/12/03/advent-of-code-interfaces-to-improve-your-life/)
+- [My second 2020 Advent of Code refactoring](https://www.codingnagger.com/2020/12/16/my-second-2020-advent-of-code-refactoring/)
+
 ## Cruise log
 
 I started writing a cruise log on day 1 to talk about progress and challenges faced during this Advent of Code 2020. You can find them below.
