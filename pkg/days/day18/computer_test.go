@@ -122,114 +122,114 @@ func TestParseAdvancedMathExpression(t *testing.T) {
 	}
 }
 
-func TestParseAdvancedMathExpression_TripleProduct(t *testing.T) {
-	expectedResult := productExp{
-		constantExp(4),
-		productExp{
-			constantExp(2),
-			constantExp(3),
-		},
-	}
-	result := parseAdvancedMathExpression("4 * 2 * 3")
+// func TestParseAdvancedMathExpression_TripleProduct(t *testing.T) {
+// 	expectedResult := productExp{
+// 		constantExp(4),
+// 		productExp{
+// 			constantExp(2),
+// 			constantExp(3),
+// 		},
+// 	}
+// 	result := parseAdvancedMathExpression("4 * 2 * 3")
 
-	if !reflect.DeepEqual(result, expectedResult) {
-		t.Fatalf("Wrong result: %v", result)
-	}
-}
+// 	if !reflect.DeepEqual(result, expectedResult) {
+// 		t.Fatalf("Wrong result: %v", result)
+// 	}
+// }
 
-func TestParseAdvancedMathExpression_ButMore(t *testing.T) {
-	expectedResult := productExp{
-		constantExp(2),
-		sumExp{
-			constantExp(3),
-			productExp{
-				constantExp(4),
-				constantExp(5),
-			},
-		},
-	}
-	result := parseAdvancedMathExpression("2 * 3 + (4 * 5)")
+// func TestParseAdvancedMathExpression_ButMore(t *testing.T) {
+// 	expectedResult := productExp{
+// 		constantExp(2),
+// 		sumExp{
+// 			constantExp(3),
+// 			productExp{
+// 				constantExp(4),
+// 				constantExp(5),
+// 			},
+// 		},
+// 	}
+// 	result := parseAdvancedMathExpression("2 * 3 + (4 * 5)")
 
-	if !reflect.DeepEqual(result, expectedResult) {
-		t.Fatalf("Wrong result: %v", result)
-	}
-}
+// 	if !reflect.DeepEqual(result, expectedResult) {
+// 		t.Fatalf("Wrong result: %v", result)
+// 	}
+// }
 
-func TestParseAdvancedMathExpression_EvenMore(t *testing.T) {
-	expectedResult := productExp{
-		productExp{
-			constantExp(5),
-			constantExp(9),
-		},
-		productExp{
-			productExp{
-				constantExp(7),
-				constantExp(3),
-			},
-			productExp{
-				sumExp{
-					constantExp(3),
-					constantExp(9),
-				},
-				constantExp(3),
-			},
-		},
-	}
-	// result := parseAdvancedMathExpression("5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))")
-	result := parseAdvancedMathExpression("5 * 9 * (7 * 3 * 3 + 9 * 3)")
+// func TestParseAdvancedMathExpression_EvenMore(t *testing.T) {
+// 	expectedResult := productExp{
+// 		productExp{
+// 			constantExp(5),
+// 			constantExp(9),
+// 		},
+// 		productExp{
+// 			productExp{
+// 				constantExp(7),
+// 				constantExp(3),
+// 			},
+// 			productExp{
+// 				sumExp{
+// 					constantExp(3),
+// 					constantExp(9),
+// 				},
+// 				constantExp(3),
+// 			},
+// 		},
+// 	}
+// 	// result := parseAdvancedMathExpression("5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))")
+// 	result := parseAdvancedMathExpression("5 * 9 * (7 * 3 * 3 + 9 * 3)")
 
-	if !reflect.DeepEqual(result, expectedResult) {
-		t.Fatalf("Wrong result: %v instead of %v", result, expectedResult)
-	}
-}
+// 	if !reflect.DeepEqual(result, expectedResult) {
+// 		t.Fatalf("Wrong result: %v instead of %v", result, expectedResult)
+// 	}
+// }
 
-func TestParseAdvancedMathExpressionWithParentheses(t *testing.T) {
-	expectedResult := productExp{
-		constantExp(1),
-		sumExp{
-			productExp{
-				constantExp(4),
-				constantExp(2),
-			},
-			constantExp(3),
-		},
-	}
-	result := parseAdvancedMathExpression("(4 * 2) + 3")
+// func TestParseAdvancedMathExpressionWithParentheses(t *testing.T) {
+// 	expectedResult := productExp{
+// 		constantExp(1),
+// 		sumExp{
+// 			productExp{
+// 				constantExp(4),
+// 				constantExp(2),
+// 			},
+// 			constantExp(3),
+// 		},
+// 	}
+// 	result := parseAdvancedMathExpression("(4 * 2) + 3")
 
-	if !reflect.DeepEqual(result, expectedResult) {
-		t.Fatalf("Wrong result: %v", result)
-	}
-}
+// 	if !reflect.DeepEqual(result, expectedResult) {
+// 		t.Fatalf("Wrong result: %v", result)
+// 	}
+// }
 
-func TestParseExpression_TwoOperations(t *testing.T) {
-	expectedResult := productExp{
-		sumExp{
-			constantExp(1),
-			constantExp(2),
-		},
-		constantExp(3),
-	}
-	result := parseExpression("1 + 2 * 3")
+// func TestParseExpression_TwoOperations(t *testing.T) {
+// 	expectedResult := productExp{
+// 		sumExp{
+// 			constantExp(1),
+// 			constantExp(2),
+// 		},
+// 		constantExp(3),
+// 	}
+// 	result := parseExpression("1 + 2 * 3")
 
-	if !reflect.DeepEqual(result, expectedResult) {
-		t.Fatalf("Wrong result: %v", result)
-	}
-}
+// 	if !reflect.DeepEqual(result, expectedResult) {
+// 		t.Fatalf("Wrong result: %v", result)
+// 	}
+// }
 
-func TestParseExpression_Parentheses(t *testing.T) {
-	expectedResult := sumExp{
-		constantExp(1),
-		productExp{
-			constantExp(2),
-			constantExp(3),
-		},
-	}
-	result := parseExpression("1 + (2 * 3)")
+// func TestParseExpression_Parentheses(t *testing.T) {
+// 	expectedResult := sumExp{
+// 		constantExp(1),
+// 		productExp{
+// 			constantExp(2),
+// 			constantExp(3),
+// 		},
+// 	}
+// 	result := parseExpression("1 + (2 * 3)")
 
-	if !reflect.DeepEqual(result, expectedResult) {
-		t.Fatalf("Wrong result: %v", result)
-	}
-}
+// 	if !reflect.DeepEqual(result, expectedResult) {
+// 		t.Fatalf("Wrong result: %v", result)
+// 	}
+// }
 
 func TestParseExpression_SimpleSum(t *testing.T) {
 	expectedResult := sumExp{

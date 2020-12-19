@@ -41,3 +41,4 @@ I started writing a cruise log on day 1 to talk about progress and challenges fa
 - [The Advent of Code 2020 Day 16 log, Alive in the zone](https://www.codingnagger.com/2020/12/16/the-advent-of-code-2020-day-16-log-alive-in-the-zone/)
 - [The Advent of Code 2020 Day 17 log, Unlimited power](https://www.codingnagger.com/2020/12/17/the-advent-of-code-2020-day-17-log-unlimited-power/)
 - [The Advent of Code 2020 Day 18 log, Math Madness](https://www.codingnagger.com/2020/12/18/the-advent-of-code-2020-day-18-log-math-madness/)
+- [](https://www.codingnagger.com/2020/12/19/the-advent-of-code-2020-day-19-log-regex-from-hell/)
