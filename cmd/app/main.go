@@ -1,22 +1,20 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 	"time"
 
-	"github.com/codingnagger/advent-of-code-2020/pkg/days"
-	"github.com/codingnagger/advent-of-code-2020/pkg/days/day19"
+	"github.com/codingnagger/advent-of-code-2020/pkg/days/day22"
+	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/inputparser"
 )
 
 func main() {
 	start := time.Now()
 
-	today := &day19.Computer{AddLoops: true}
+	today := &day22.Computer{}
 
-	input := readInput("./assets/input/day19.txt")
+	input := inputparser.ReadInput("./assets/input/day22.txt")
 
 	res, err := today.Part2(input)
 
@@ -28,25 +26,4 @@ func main() {
 
 	elapsed := time.Since(start)
 	fmt.Printf("\nExecution took %s\n", elapsed)
-}
-
-func readInput(filename string) days.Input {
-	file, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	res := []string{}
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		res = append(res, scanner.Text())
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
-	return res
 }

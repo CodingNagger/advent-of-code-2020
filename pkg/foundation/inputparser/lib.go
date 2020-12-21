@@ -1,8 +1,13 @@
 package inputparser
 
 import (
+	"bufio"
+	"log"
+	"os"
 	"strconv"
 	"strings"
+
+	"github.com/codingnagger/advent-of-code-2020/pkg/days"
 )
 
 // ParseNumbers returns a list of int from a list of string
@@ -33,4 +38,26 @@ func ParseCsvNumbers(line string, fallbackValue int) []int {
 	}
 
 	return ids
+}
+
+// ReadInput loads input from a filename
+func ReadInput(filename string) days.Input {
+	file, err := os.Open(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	res := []string{}
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		res = append(res, scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	return res
 }
