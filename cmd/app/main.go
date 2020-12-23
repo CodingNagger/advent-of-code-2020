@@ -5,16 +5,16 @@ import (
 	"log"
 	"time"
 
-	"github.com/codingnagger/advent-of-code-2020/pkg/days/day22"
+	"github.com/codingnagger/advent-of-code-2020/pkg/days/day23"
 	"github.com/codingnagger/advent-of-code-2020/pkg/foundation/inputparser"
 )
 
 func main() {
 	start := time.Now()
 
-	today := &day22.Computer{}
+	today := &day23.Computer{}
 
-	input := inputparser.ReadInput("./assets/input/day22.txt")
+	input := inputparser.ReadInput("./assets/input/day23.txt")
 
 	res, err := today.Part2(input)
 

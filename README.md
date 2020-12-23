@@ -45,3 +45,4 @@ I started writing a cruise log on day 1 to talk about progress and challenges fa
 - [The Advent of Code 2020 Day 20 log, Here be dragons](https://www.codingnagger.com/2020/12/22/the-advent-of-code-2020-day-20-log-here-be-dragons/)
 - [The Advent of Code 2020 Day 21 log, Nice and easy](https://www.codingnagger.com/2020/12/21/the-advent-of-code-2020-day-21-log-nice-and-easy/)
 - [The Advent of Code 2020 Day 22 log, Animal trickery](https://www.codingnagger.com/2020/12/22/the-advent-of-code-2020-day-22-log-animal-trickery/)
+- [The Advent of Code 2020 Day 23 log, Crab’s revenge](https://www.codingnagger.com/2020/12/23/the-advent-of-code-2020-day-23-log-crabs-revenge/)
