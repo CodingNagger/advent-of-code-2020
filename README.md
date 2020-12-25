@@ -14,6 +14,9 @@ go run ./cmd/app
 go test ./...
 ```
 
+Looks like some unimportant tests for days 24 and 19 broke with my final solutions. Don't run the command. I won't fix them, they probably should be deleted 
+but since I'm not sure I'll leave them there forever.
+
 ## Some posts I wrote about this year's Advent of Code
 
 - [Some interfaces you can write in Go or C# to save time](https://www.codingnagger.com/2020/12/03/advent-of-code-interfaces-to-improve-your-life/)
@@ -47,3 +50,4 @@ I started writing a cruise log on day 1 to talk about progress and challenges fa
 - [The Advent of Code 2020 Day 22 log, Animal trickery](https://www.codingnagger.com/2020/12/22/the-advent-of-code-2020-day-22-log-animal-trickery/)
 - [The Advent of Code 2020 Day 23 log, Crab’s revenge](https://www.codingnagger.com/2020/12/23/the-advent-of-code-2020-day-23-log-crabs-revenge/)
 - [The Advent of Code 2020 Day 24 log, Black faces](https://www.codingnagger.com/2020/12/24/the-advent-of-code-2020-day-24-log-black-faces/)
+- [The Advent of Code 2020 Day 25 log, Happy ending](https://www.codingnagger.com/2020/12/25/the-advent-of-code-2020-day-25-log-happy-ending/)
